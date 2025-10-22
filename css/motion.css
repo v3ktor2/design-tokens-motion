@@ -17,8 +17,8 @@
 
   /* === Delay & Stagger === */
   --motion-delay-none: 0ms;
-  --motion-delay-s: 40ms;
-  --motion-delay-m: 80ms;
+  --motion-delay-s: 400ms;
+  --motion-delay-m: 800ms;
   --motion-stagger-s: 30ms;
   --motion-stagger-m: 60ms;
 
@@ -43,34 +43,26 @@
    🎨 Level 2 – Semantic Patterns
 =========================================== */
 :root {
-  /* === Enter / Exit === */
   --motion-enter: transform var(--motion-dur-m) var(--motion-ease-out),
                   opacity var(--motion-dur-m) var(--motion-ease-standard);
   --motion-exit: transform var(--motion-dur-s) var(--motion-ease-in),
                  opacity var(--motion-dur-s) var(--motion-ease-standard);
-
-  /* === Fade === */
   --motion-fade: opacity var(--motion-dur-m) var(--motion-ease-standard);
-
-  /* === Slide Horizontal === */
   --motion-slide-h: transform var(--motion-dur-l) var(--motion-ease-out),
                     box-shadow var(--motion-dur-l) var(--motion-ease-out);
-
-  /* === Feedback === */
   --motion-feedback: transform var(--motion-dur-s) var(--motion-ease-emph),
                      opacity var(--motion-dur-s) var(--motion-ease-standard);
-
-  /* === Scale transitions === */
   --motion-scale-tap-transition:
     transform var(--motion-dur-s) var(--motion-ease-out);
   --motion-scale-pop-transition:
     transform var(--motion-dur-m) var(--motion-ease-emph);
 
-  /* === Spinner → Check pattern === */
-  --motion-spinner-out-duration: var(--motion-dur-s);
-  --motion-spinner-out-easing: var(--motion-ease-in);
-  --motion-check-in-duration: var(--motion-dur-m);
-  --motion-check-in-easing: var(--motion-ease-emph);
+  /* Spinner → Check sequence */
+  --motion-spinner-duration: 1800ms;
+  --motion-spinner-out-duration: var(--motion-dur-m);
+  --motion-spinner-out-delay: var(--motion-delay-m);
+  --motion-check-in-duration: 600ms;
+  --motion-check-in-delay: calc(var(--motion-spinner-duration) + var(--motion-delay-s));
 }
 
 /* ===========================================
@@ -84,7 +76,6 @@
     --motion-dur-l: 0ms;
     --motion-dur-xl: 0ms;
   }
-
   * {
     animation: none !important;
     transition-duration: 0ms !important;
