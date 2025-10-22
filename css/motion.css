@@ -28,6 +28,10 @@
   --motion-translate-s: 8px;
   --motion-translate-m: 12px;
   --motion-opacity-dim: 0.4;
+
+   /* === Scale === */
+--motion-scale-tap: 0.96;
+--motion-scale-pop: 1.06;
 }
 
 /* ===========================================
@@ -65,6 +69,12 @@
   --motion-feedback-easing: var(--motion-ease-emph);
   --motion-feedback: transform var(--motion-feedback-duration) var(--motion-feedback-easing),
                      opacity var(--motion-feedback-duration) var(--motion-fade-easing);
+
+   /* === Scale patterns === */
+--motion-scale-tap-transition:
+  transform var(--motion-dur-s) var(--motion-ease-out);
+--motion-scale-pop-transition:
+  transform var(--motion-dur-m) var(--motion-ease-emph);
 }
 
 /* ===========================================
