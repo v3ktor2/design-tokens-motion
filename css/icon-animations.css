@@ -1,0 +1,45 @@
+@import "motion.css";
+
+/* Spinner */
+.icon-spinner .track {
+  stroke: rgba(255,255,255,0.3);
+  stroke-width: 2;
+}
+.icon-spinner .arc {
+  stroke: #fff;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 63;
+  stroke-dashoffset: 45;
+  transform-origin: center;
+  animation: spin var(--motion-dur-m, 1.2s) linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Checkmark */
+.icon-checkmark .circle {
+  stroke: #fff;
+  stroke-width: 2;
+  stroke-linecap: round;
+  opacity: 0;
+}
+.icon-checkmark .tick {
+  stroke: #fff;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0;
+  stroke-dasharray: 20;
+  stroke-dashoffset: 20;
+}
+
+/* Reveal animation (applied by component) */
+@keyframes drawCircle {
+  from { opacity: 0; stroke-dasharray: 0 63; }
+  to   { opacity: 1; stroke-dasharray: 63 0; }
+}
+@keyframes drawTick {
+  to { stroke-dashoffset: 0; opacity: 1; }
+}
