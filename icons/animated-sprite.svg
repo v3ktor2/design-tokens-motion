@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="icon-spinner" viewBox="0 0 24 24" class="icon-spinner">
+    <circle class="track" cx="12" cy="12" r="10" fill="none"/>
+    <circle class="arc" cx="12" cy="12" r="10" fill="none"/>
+  </symbol>
+
+  <symbol id="icon-checkmark" viewBox="0 0 24 24" class="icon-checkmark">
+    <circle class="circle" cx="12" cy="12" r="10" fill="none"/>
+    <polyline class="tick" points="7,12 10,15 17,8" fill="none"/>
+  </symbol>
+</svg>
