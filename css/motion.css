@@ -1,1 +1,91 @@
+/* ===========================================
+   🧱 Primitive Motion Tokens
+   (Low-level building blocks)
+=========================================== */
+:root {
+  /* === Duration === */
+  --motion-dur-xs: 120ms;
+  --motion-dur-s: 180ms;
+  --motion-dur-m: 240ms;
+  --motion-dur-l: 320ms;
+  --motion-dur-xl: 420ms;
 
+  /* === Delay & Stagger === */
+  --motion-delay-none: 0ms;
+  --motion-delay-s: 40ms;
+  --motion-delay-m: 80ms;
+  --motion-stagger-s: 30ms;
+  --motion-stagger-m: 60ms;
+
+  /* === Easing === */
+  --motion-ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --motion-ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --motion-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --motion-ease-emph: cubic-bezier(0.05, 0.7, 0.1, 1);
+
+  /* === Transform & Opacity === */
+  --motion-translate-xs: 4px;
+  --motion-translate-s: 8px;
+  --motion-translate-m: 12px;
+  --motion-opacity-dim: 0.4;
+}
+
+/* ===========================================
+   🎨 Semantic Motion Tokens
+   (Meaningful patterns built from primitives)
+=========================================== */
+:root {
+  /* === Enter === */
+  --motion-enter-duration: var(--motion-dur-m);
+  --motion-enter-easing: var(--motion-ease-out);
+  --motion-enter-distance: var(--motion-translate-s);
+  --motion-enter: transform var(--motion-enter-duration) var(--motion-enter-easing),
+                  opacity var(--motion-enter-duration) var(--motion-ease-standard);
+
+  /* === Exit === */
+  --motion-exit-duration: var(--motion-dur-s);
+  --motion-exit-easing: var(--motion-ease-in);
+  --motion-exit-distance: var(--motion-translate-s);
+  --motion-exit: transform var(--motion-exit-duration) var(--motion-exit-easing),
+                 opacity var(--motion-exit-duration) var(--motion-ease-standard);
+
+  /* === Fade === */
+  --motion-fade-duration: var(--motion-dur-m);
+  --motion-fade-easing: var(--motion-ease-standard);
+  --motion-fade: opacity var(--motion-fade-duration) var(--motion-fade-easing);
+
+  /* === Slide Horizontal === */
+  --motion-slide-h-distance: var(--motion-translate-m);
+  --motion-slide-h-duration: var(--motion-dur-l);
+  --motion-slide-h: transform var(--motion-slide-h-duration) var(--motion-ease-out),
+                    box-shadow var(--motion-slide-h-duration) var(--motion-ease-out);
+
+  /* === Feedback / Success === */
+  --motion-feedback-duration: var(--motion-dur-s);
+  --motion-feedback-easing: var(--motion-ease-emph);
+  --motion-feedback: transform var(--motion-feedback-duration) var(--motion-feedback-easing),
+                     opacity var(--motion-feedback-duration) var(--motion-fade-easing);
+}
+
+/* ===========================================
+   ♿ Reduced Motion Support
+=========================================== */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-dur-xs: 0ms;
+    --motion-dur-s: 0ms;
+    --motion-dur-m: 0ms;
+    --motion-dur-l: 0ms;
+    --motion-dur-xl: 0ms;
+
+    --motion-enter-distance: 0px;
+    --motion-exit-distance: 0px;
+    --motion-slide-h-distance: 0px;
+  }
+
+  * {
+    animation: none !important;
+    transition-duration: 0ms !important;
+    transition-delay: 0ms !important;
+  }
+}
