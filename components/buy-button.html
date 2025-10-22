@@ -5,24 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Buy Button Component</title>
 
-  <!-- Shared CSS -->
   <link rel="stylesheet" href="../css/motion.css" />
   <link rel="stylesheet" href="../css/icon-animations.css" />
   <link rel="stylesheet" href="../css/components.css" />
 </head>
 <body>
+
+  <!-- Inline sprite (same-document, fully stylable) -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+    <symbol id="icon-spinner" viewBox="0 0 24 24" class="icon-spinner">
+      <circle class="track" cx="12" cy="12" r="10" fill="none"/>
+      <circle class="arc" cx="12" cy="12" r="10" fill="none"/>
+    </symbol>
+
+    <symbol id="icon-checkmark" viewBox="0 0 24 24" class="icon-checkmark">
+      <circle class="circle" cx="12" cy="12" r="10" fill="none"/>
+      <polyline class="tick" points="7,12 10,15 17,8" fill="none"/>
+    </symbol>
+  </svg>
+
+  <!-- Component -->
   <button class="buy-btn" id="buy-btn">
     <span class="label">Buy Now</span>
 
-<!-- Spinner -->
-<svg class="spinner" viewBox="0 0 24 24">
-  <use href="../icons/animated-sprite.svg#icon-spinner"></use>
-</svg>
+    <svg class="spinner" viewBox="0 0 24 24">
+      <use href="#icon-spinner"></use>
+    </svg>
 
-<!-- Checkmark -->
-<svg class="checkmark" viewBox="0 0 24 24">
-  <use href="../icons/animated-sprite.svg#icon-checkmark"></use>
-</svg>
+    <svg class="checkmark" viewBox="0 0 24 24">
+      <use href="#icon-checkmark"></use>
+    </svg>
   </button>
 
   <script src="../js/buy-button.js"></script>
