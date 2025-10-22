@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg">
-  <symbol id="icon-spinner" viewBox="0 0 24 24">
-    <circle class="track" cx="12" cy="12" r="10" fill="none"/>
-    <circle class="arc"   cx="12" cy="12" r="10" fill="none"/>
-  </symbol>
-</svg>
