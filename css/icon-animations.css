@@ -1,13 +1,8 @@
-/* =========================================================
-   Icon Animations – Semantic Layer
-   Reusable motion patterns for spinner and checkmark icons.
-========================================================= */
-
 @import "motion.css";
 
 /* Spinner */
 .icon-spinner .track {
-  stroke: rgba(255, 255, 255, 0.3);
+  stroke: rgba(255,255,255,0.3);
   stroke-width: 2;
 }
 .icon-spinner .arc {
@@ -19,7 +14,6 @@
   transform-origin: center;
   animation: spin var(--motion-dur-m, 1.2s) linear infinite;
 }
-
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
@@ -42,7 +36,6 @@
   stroke-dasharray: 20;
   stroke-dashoffset: 20;
 }
-
 @keyframes drawCircle {
   from { opacity: 0; stroke-dasharray: 0 63; }
   to   { opacity: 1; stroke-dasharray: 63 0; }
