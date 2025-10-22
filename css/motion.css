@@ -1,14 +1,21 @@
+/* =========================================================
+   🎬 Motion Tokens
+   Two-level structure: primitives + semantic patterns
+   Maintainer: Viktor Engelbert
+   Source: https://v3ktor2.github.io/design-tokens-motion/css/motion.css
+========================================================= */
+
 /* ===========================================
-   🧱 Primitive Motion Tokens
+   🧩 Level 1 — Primitive Motion Tokens
    (Low-level building blocks)
 =========================================== */
 :root {
   /* === Duration === */
-  --motion-dur-xs: 120ms;
-  --motion-dur-s: 180ms;
-  --motion-dur-m: 240ms;
-  --motion-dur-l: 320ms;
-  --motion-dur-xl: 420ms;
+  --motion-dur-xs: 120ms;   /* micro feedback (hover, icon blink) */
+  --motion-dur-s: 180ms;    /* small state changes (press, tooltip) */
+  --motion-dur-m: 240ms;    /* medium transitions (accordion, dropdown) */
+  --motion-dur-l: 320ms;    /* overlays, drawers */
+  --motion-dur-xl: 420ms;   /* large view transitions */
 
   /* === Delay & Stagger === */
   --motion-delay-none: 0ms;
@@ -23,30 +30,28 @@
   --motion-ease-standard: cubic-bezier(0.2, 0, 0, 1);
   --motion-ease-emph: cubic-bezier(0.05, 0.7, 0.1, 1);
 
-  /* === Transform & Opacity === */
+  /* === Transform, Opacity & Scale === */
   --motion-translate-xs: 4px;
   --motion-translate-s: 8px;
   --motion-translate-m: 12px;
   --motion-opacity-dim: 0.4;
 
-   /* === Scale === */
---motion-scale-tap: 0.96;
---motion-scale-pop: 1.06;
+  --motion-scale-tap: 0.96;  /* press feedback */
+  --motion-scale-pop: 1.06;  /* success emphasis */
 }
 
 /* ===========================================
-   🎨 Semantic Motion Tokens
-   (Meaningful patterns built from primitives)
+   🎨 Level 2 — Semantic Motion Tokens
+   (Meaningful reusable motion patterns)
 =========================================== */
 :root {
-  /* === Enter === */
+  /* === Enter / Exit === */
   --motion-enter-duration: var(--motion-dur-m);
   --motion-enter-easing: var(--motion-ease-out);
   --motion-enter-distance: var(--motion-translate-s);
   --motion-enter: transform var(--motion-enter-duration) var(--motion-enter-easing),
                   opacity var(--motion-enter-duration) var(--motion-ease-standard);
 
-  /* === Exit === */
   --motion-exit-duration: var(--motion-dur-s);
   --motion-exit-easing: var(--motion-ease-in);
   --motion-exit-distance: var(--motion-translate-s);
@@ -58,7 +63,7 @@
   --motion-fade-easing: var(--motion-ease-standard);
   --motion-fade: opacity var(--motion-fade-duration) var(--motion-fade-easing);
 
-  /* === Slide Horizontal === */
+  /* === Slide (Horizontal) === */
   --motion-slide-h-distance: var(--motion-translate-m);
   --motion-slide-h-duration: var(--motion-dur-l);
   --motion-slide-h: transform var(--motion-slide-h-duration) var(--motion-ease-out),
@@ -70,11 +75,11 @@
   --motion-feedback: transform var(--motion-feedback-duration) var(--motion-feedback-easing),
                      opacity var(--motion-feedback-duration) var(--motion-fade-easing);
 
-   /* === Scale patterns === */
---motion-scale-tap-transition:
-  transform var(--motion-dur-s) var(--motion-ease-out);
---motion-scale-pop-transition:
-  transform var(--motion-dur-m) var(--motion-ease-emph);
+  /* === Scale === */
+  --motion-scale-tap-transition:
+    transform var(--motion-dur-s) var(--motion-ease-out);
+  --motion-scale-pop-transition:
+    transform var(--motion-dur-m) var(--motion-ease-emph);
 }
 
 /* ===========================================
@@ -99,3 +104,30 @@
     transition-delay: 0ms !important;
   }
 }
+
+/* ===========================================
+   🧾 Usage Examples (for documentation)
+   These do not affect runtime, purely illustrative.
+=========================================== */
+/*
+.toast {
+  transform: translateY(var(--motion-enter-distance));
+  transition: var(--motion-enter);
+}
+
+.sidebar {
+  transition: var(--motion-slide-h);
+}
+
+.buy-btn {
+  transition: var(--motion-scale-tap-transition);
+}
+
+.spinner.visible {
+  transition: var(--motion-enter);
+}
+
+.checkmark.visible {
+  transition: var(--motion-scale-pop-transition);
+}
+*/
