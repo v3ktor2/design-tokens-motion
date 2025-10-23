@@ -16,8 +16,8 @@
   stroke-dasharray: 63;
   stroke-dashoffset: 45;
   transform-origin: center;
-  /* slowed from 1.2 s to 1.8 s */
-  animation: spin 1.8s linear infinite;
+  /* 3 seconds instead of 1.8s */
+  animation: spin 3s linear infinite;
 }
 @keyframes spin {
   to { transform: rotate(360deg); }
