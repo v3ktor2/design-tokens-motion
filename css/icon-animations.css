@@ -1,13 +1,10 @@
 @import url("https://v3ktor2.github.io/design-tokens-motion/css/motion.css");
 
-/* =========================================================
-   SPINNER
-========================================================= */
+/* ---------- Spinner ---------- */
 .icon-spinner .track {
   stroke: rgba(255,255,255,0.3);
   stroke-width: 2;
 }
-
 .icon-spinner .arc {
   stroke: #fff;
   stroke-width: 2;
@@ -17,39 +14,41 @@
   transform-origin: center;
   animation: spin 1.2s linear infinite;
 }
-
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
 
-/* =========================================================
-   CHECKMARK  (debug-visible version)
-========================================================= */
-.icon-checkmark .circle,
+/* ---------- Checkmark ---------- */
+.icon-checkmark .circle {
+  stroke: #fff;
+  stroke-width: 2;
+  stroke-linecap: round;
+  fill: none;
+  opacity: 0;
+  stroke-dasharray: 63;
+  stroke-dashoffset: 63;
+}
 .icon-checkmark .tick {
   stroke: #fff;
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
   fill: none;
-  opacity: 1;                 /* force visible for testing */
+  opacity: 0;
+  stroke-dasharray: 20;
+  stroke-dashoffset: 20;
 }
-
 @keyframes drawCircle {
-  from { stroke-dasharray: 0 63; }
-  to   { stroke-dasharray: 63 0; }
+  0% { opacity:1; stroke-dashoffset:63; }
+  100% { opacity:1; stroke-dashoffset:0; }
 }
-
 @keyframes drawTick {
-  from { stroke-dasharray: 0 22; }
-  to   { stroke-dasharray: 22 0; }
+  0% { opacity:1; stroke-dashoffset:20; }
+  100% { opacity:1; stroke-dashoffset:0; }
 }
-
-/* When button enters success state, draw both lines */
 .buy-btn.success .checkmark .circle {
   animation: drawCircle 0.8s var(--motion-ease-out) forwards;
 }
-
 .buy-btn.success .checkmark .tick {
   animation: drawTick 0.8s var(--motion-ease-emph) forwards 0.4s;
 }
