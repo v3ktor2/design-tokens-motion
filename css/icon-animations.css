@@ -1,14 +1,10 @@
-/* =========================================================
-   Icon Animations – Semantic Layer (Stable working version)
-========================================================= */
-
 @import url("https://v3ktor2.github.io/design-tokens-motion/css/motion.css");
 
 /* =========================================================
    SPINNER
 ========================================================= */
 .icon-spinner .track {
-  stroke: rgba(255, 255, 255, 0.3);
+  stroke: rgba(255,255,255,0.3);
   stroke-width: 2;
 }
 
@@ -19,8 +15,7 @@
   stroke-dasharray: 63;
   stroke-dashoffset: 45;
   transform-origin: center;
-  /* balanced speed */
-  animation: spin 2s linear infinite;
+  animation: spin 1.2s linear infinite;
 }
 
 @keyframes spin {
@@ -28,44 +23,33 @@
 }
 
 /* =========================================================
-   CHECKMARK
+   CHECKMARK  (debug-visible version)
 ========================================================= */
-.icon-checkmark .circle {
-  stroke: #fff;
-  stroke-width: 2;
-  stroke-linecap: round;
-  fill: none;
-  /* start visible for debug */
-  opacity: 1;
-  stroke-dasharray: 63;
-  stroke-dashoffset: 63;
-}
-
+.icon-checkmark .circle,
 .icon-checkmark .tick {
   stroke: #fff;
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
   fill: none;
-  opacity: 1;
-  stroke-dasharray: 22;
-  stroke-dashoffset: 22;
+  opacity: 1;                 /* force visible for testing */
 }
 
 @keyframes drawCircle {
-  0%   { stroke-dashoffset: 63; }
-  100% { stroke-dashoffset: 0; }
+  from { stroke-dasharray: 0 63; }
+  to   { stroke-dasharray: 63 0; }
 }
 
 @keyframes drawTick {
-  0%   { stroke-dashoffset: 22; }
-  100% { stroke-dashoffset: 0; }
+  from { stroke-dasharray: 0 22; }
+  to   { stroke-dasharray: 22 0; }
 }
 
-/* animate both when button is in success */
+/* When button enters success state, draw both lines */
 .buy-btn.success .checkmark .circle {
   animation: drawCircle 0.8s var(--motion-ease-out) forwards;
 }
+
 .buy-btn.success .checkmark .tick {
   animation: drawTick 0.8s var(--motion-ease-emph) forwards 0.4s;
 }
