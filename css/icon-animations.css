@@ -1,5 +1,5 @@
 /* =========================================================
-   Icon Animations – Semantic Layer (Final tested version)
+   Icon Animations – Semantic Layer (Stable working version)
 ========================================================= */
 
 @import url("https://v3ktor2.github.io/design-tokens-motion/css/motion.css");
@@ -19,8 +19,8 @@
   stroke-dasharray: 63;
   stroke-dashoffset: 45;
   transform-origin: center;
-  /* moderate speed: 1.5 s per rotation */
-  animation: spin 1.5s linear infinite;
+  /* balanced speed */
+  animation: spin 2s linear infinite;
 }
 
 @keyframes spin {
@@ -35,7 +35,8 @@
   stroke-width: 2;
   stroke-linecap: round;
   fill: none;
-  opacity: 0;
+  /* start visible for debug */
+  opacity: 1;
   stroke-dasharray: 63;
   stroke-dashoffset: 63;
 }
@@ -46,31 +47,22 @@
   stroke-linecap: round;
   stroke-linejoin: round;
   fill: none;
-  opacity: 0;
+  opacity: 1;
   stroke-dasharray: 22;
   stroke-dashoffset: 22;
 }
 
-/* Circle draws first */
 @keyframes drawCircle {
-  0%   { opacity: 1; stroke-dashoffset: 63; }
-  100% { opacity: 1; stroke-dashoffset: 0; }
+  0%   { stroke-dashoffset: 63; }
+  100% { stroke-dashoffset: 0; }
 }
 
-/* Tick draws after circle */
 @keyframes drawTick {
-  0%   { opacity: 1; stroke-dashoffset: 22; }
-  100% { opacity: 1; stroke-dashoffset: 0; }
+  0%   { stroke-dashoffset: 22; }
+  100% { stroke-dashoffset: 0; }
 }
 
-/* Make sure the shapes are visible while animating */
-.buy-btn.success .checkmark .circle,
-.buy-btn.success .checkmark .tick {
-  opacity: 1;
-  stroke: #fff;
-}
-
-/* Trigger animations */
+/* animate both when button is in success */
 .buy-btn.success .checkmark .circle {
   animation: drawCircle 0.8s var(--motion-ease-out) forwards;
 }
