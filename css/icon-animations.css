@@ -1,18 +1,11 @@
 /* =========================================================
-   Icon Animations – Semantic Layer
-   (Complete file)
-   ---------------------------------------------------------
-   • Uses motion tokens from motion.css
-   • Animates spinner rotation and checkmark draw
-   • Designed for 24x24 px SVG icons
+   Icon Animations – Semantic Layer (Final tested version)
 ========================================================= */
 
 @import url("https://v3ktor2.github.io/design-tokens-motion/css/motion.css");
 
 /* =========================================================
    SPINNER
-   ---------------------------------------------------------
-   Visible during .buy-btn.loading
 ========================================================= */
 .icon-spinner .track {
   stroke: rgba(255, 255, 255, 0.3);
@@ -26,8 +19,8 @@
   stroke-dasharray: 63;
   stroke-dashoffset: 45;
   transform-origin: center;
-  /* Slow rotation: 3 seconds per loop */
-  animation: spin 3s linear infinite;
+  /* moderate speed: 1.5 s per rotation */
+  animation: spin 1.5s linear infinite;
 }
 
 @keyframes spin {
@@ -36,8 +29,6 @@
 
 /* =========================================================
    CHECKMARK
-   ---------------------------------------------------------
-   Visible during .buy-btn.success
 ========================================================= */
 .icon-checkmark .circle {
   stroke: #fff;
@@ -56,8 +47,8 @@
   stroke-linejoin: round;
   fill: none;
   opacity: 0;
-  stroke-dasharray: 20;
-  stroke-dashoffset: 20;
+  stroke-dasharray: 22;
+  stroke-dashoffset: 22;
 }
 
 /* Circle draws first */
@@ -68,15 +59,21 @@
 
 /* Tick draws after circle */
 @keyframes drawTick {
-  0%   { opacity: 1; stroke-dashoffset: 20; }
+  0%   { opacity: 1; stroke-dashoffset: 22; }
   100% { opacity: 1; stroke-dashoffset: 0; }
 }
 
-/* Attach animations when the button is in success state */
+/* Make sure the shapes are visible while animating */
+.buy-btn.success .checkmark .circle,
+.buy-btn.success .checkmark .tick {
+  opacity: 1;
+  stroke: #fff;
+}
+
+/* Trigger animations */
 .buy-btn.success .checkmark .circle {
   animation: drawCircle 0.8s var(--motion-ease-out) forwards;
 }
-
 .buy-btn.success .checkmark .tick {
   animation: drawTick 0.8s var(--motion-ease-emph) forwards 0.4s;
 }
