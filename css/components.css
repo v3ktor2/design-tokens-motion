@@ -59,8 +59,8 @@ body {
 
 /* Success animation sequencing */
 .buy-btn.success .checkmark .circle {
-  animation: drawCircle 0.5s var(--motion-ease-out) forwards;
+  animation: drawCircle 0.6s var(--motion-ease-out) forwards;
 }
 .buy-btn.success .checkmark .tick {
-  animation: drawTick 0.6s var(--motion-ease-emph) forwards 0.2s;
+  animation: drawTick 0.6s var(--motion-ease-emph) forwards 0.3s;
 }
