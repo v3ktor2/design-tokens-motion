@@ -1,14 +1,24 @@
+/* =========================================================
+   Icon Animations – Semantic Layer
+   (Complete file)
+   ---------------------------------------------------------
+   • Uses motion tokens from motion.css
+   • Animates spinner rotation and checkmark draw
+   • Designed for 24x24 px SVG icons
+========================================================= */
+
 @import url("https://v3ktor2.github.io/design-tokens-motion/css/motion.css");
 
 /* =========================================================
-   Icon Animations – Semantic Layer
+   SPINNER
+   ---------------------------------------------------------
+   Visible during .buy-btn.loading
 ========================================================= */
-
-/* --- Spinner --- */
 .icon-spinner .track {
-  stroke: rgba(255,255,255,0.3);
+  stroke: rgba(255, 255, 255, 0.3);
   stroke-width: 2;
 }
+
 .icon-spinner .arc {
   stroke: #fff;
   stroke-width: 2;
@@ -16,14 +26,19 @@
   stroke-dasharray: 63;
   stroke-dashoffset: 45;
   transform-origin: center;
-  /* 3 seconds instead of 1.8s */
+  /* Slow rotation: 3 seconds per loop */
   animation: spin 3s linear infinite;
 }
+
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
 
-/* --- Checkmark --- */
+/* =========================================================
+   CHECKMARK
+   ---------------------------------------------------------
+   Visible during .buy-btn.success
+========================================================= */
 .icon-checkmark .circle {
   stroke: #fff;
   stroke-width: 2;
@@ -33,6 +48,7 @@
   stroke-dasharray: 63;
   stroke-dashoffset: 63;
 }
+
 .icon-checkmark .tick {
   stroke: #fff;
   stroke-width: 2;
@@ -44,12 +60,23 @@
   stroke-dashoffset: 20;
 }
 
-/* Draw circle and tick */
+/* Circle draws first */
 @keyframes drawCircle {
   0%   { opacity: 1; stroke-dashoffset: 63; }
   100% { opacity: 1; stroke-dashoffset: 0; }
 }
+
+/* Tick draws after circle */
 @keyframes drawTick {
   0%   { opacity: 1; stroke-dashoffset: 20; }
   100% { opacity: 1; stroke-dashoffset: 0; }
+}
+
+/* Attach animations when the button is in success state */
+.buy-btn.success .checkmark .circle {
+  animation: drawCircle 0.8s var(--motion-ease-out) forwards;
+}
+
+.buy-btn.success .checkmark .tick {
+  animation: drawTick 0.8s var(--motion-ease-emph) forwards 0.4s;
 }
